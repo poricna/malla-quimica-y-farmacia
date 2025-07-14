@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #ffe6f5;
+      background-color: #ffe6f0;
       margin: 20px;
       color: #333;
       overflow-x: auto;
@@ -15,23 +15,22 @@
 
     h1 {
       text-align: center;
-      color: #c2185b;
+      color: #d63384;
     }
 
     #malla {
       display: flex;
       flex-direction: row;
-  grid-template-columns: repeat(11, 1fr);
-  gap: 10px;
+      gap: 10px;
+      min-width: max-content;
     }
 
     .semestre {
-      background: #ffe0eb;
-      border: 2px solid #f5a5c5;
-      border-radius: 15px;
+      background: #fff0f5;
+      border: 2px solid #f8c0d8;
+      border-radius: 10px;
       padding: 10px;
-      front-size: 0.85rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 260px;
       flex-shrink: 0;
     }
@@ -39,26 +38,24 @@
     .semestre h2 {
       margin-top: 0;
       font-size: 0.95rem;
-      color: #b00060;
+      color: #c2185b;
       text-align: center;
     }
 
     .asignatura {
       padding: 12px;
-      front-size: 0.85rem;
       margin-bottom: 10px;
       border-left: 5px solid #f06292;
-      background-color: #fbaacb;
+      background-color: #fce4ec;
       transition: 0.3s;
-      border-radius: 20px;
-      color: #7b003f;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      color: #d63384;
       text-align: center;
       min-height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      box-shadow: inset 0 -4px 0 #d6799d;
     }
 
     .asignatura.locked {
@@ -67,21 +64,13 @@
     }
 
     .asignatura:hover {
-      background-color: ##f693bb;
+      background-color: #f8bbd0;
       cursor: pointer;
     }
 
     .asignatura.completed {
-      background-color: #c48ab9;
-      font-style: italic;
-      color: #fff;
+      background-color: #f48fb1;
       text-decoration: line-through;
-    }
-
-    .requisitos {
-      font-size: 12px;
-      color: #555;
-    }
   </style>
 </head>
 <body>
