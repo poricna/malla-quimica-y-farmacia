@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #ffe6f0;
+      background-color: #ffe6f5;
       margin: 20px;
       color: #333;
       overflow-x: auto;
@@ -15,7 +15,7 @@
 
     h1 {
       text-align: center;
-      color: #d63384;
+      color: #c2185b;
     }
 
     #malla {
@@ -26,12 +26,12 @@
     }
 
     .semestre {
-      background: #fff0f5;
-      border: 2px solid #f8c0d8;
-      border-radius: 10px;
+      background: #ffe0eb;
+      border: 2px solid #f5a5c5;
+      border-radius: 15px;
       padding: 10px;
       front-size: 0.85rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       width: 260px;
       flex-shrink: 0;
     }
@@ -39,7 +39,7 @@
     .semestre h2 {
       margin-top: 0;
       font-size: 0.95rem;
-      color: #c2185b;
+      color: #b00060;
       text-align: center;
     }
 
@@ -48,15 +48,17 @@
       front-size: 0.85rem;
       margin-bottom: 10px;
       border-left: 5px solid #f06292;
-      background-color: #fce4ec;
+      background-color: #fbaacb;
       transition: 0.3s;
-      border-radius: 15px;
-      color: #d63384;
+      border-radius: 20px;
+      color: #7b003f;
       text-align: center;
       min-height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: bold;
+      box-shadow: inset 0 -4px 0 #d6799d;
     }
 
     .asignatura.locked {
@@ -65,12 +67,13 @@
     }
 
     .asignatura:hover {
-      background-color: #f8bbd0;
+      background-color: ##f693bb;
       cursor: pointer;
     }
 
     .asignatura.completed {
-      background-color: #f48fb1;
+      background-color: #c48ab9;
+      font-style: italic;
       text-decoration: line-through;
     }
 
@@ -86,28 +89,28 @@
 
   <script>
     const semestres = [
-      { nombre: "Primer Semestre", asignaturas: [
+      { nombre: "1° Semestre", asignaturas: [
         { codigo: "QUIM100", nombre: "Química General I", requisitos: [] },
         { codigo: "BIOL130", nombre: "Biología Celular", requisitos: [] },
         { codigo: "FMMP101", nombre: "Álgebra y Cálculo", requisitos: [] },
         { codigo: "CEGHC11", nombre: "Habilidades Comunicativas", requisitos: [] },
         { codigo: "FARM100", nombre: "Introducción a las Ciencias Farmacéuticas", requisitos: [] }
       ]},
-      { nombre: "Segundo Semestre", asignaturas: [
+      { nombre: "2° Semestre", asignaturas: [
         { codigo: "QUIM200", nombre: "Química General II", requisitos: ["QUIM100"] },
         { codigo: "QUIM210", nombre: "Química Orgánica I", requisitos: ["QUIM100"] },
         { codigo: "MORF014", nombre: "Morfología", requisitos: ["BIOL130"] },
         { codigo: "CFIS107", nombre: "Física", requisitos: ["FMMP101"] },
         { codigo: "ING119", nombre: "Inglés I", requisitos: [] }
       ]},
-      { nombre: "Tercer Semestre", asignaturas: [
+      { nombre: "3° Semestre", asignaturas: [
         { codigo: "QUIM300", nombre: "Fisicoquímica Aplicada", requisitos: ["QUIM200","FMMP101","CFIS107"] },
         { codigo: "QUIM310", nombre: "Química Orgánica II", requisitos: ["QUIM210"] },
         { codigo: "BIOL272", nombre: "Fisiología Humana", requisitos: ["MORF014"] },
         { codigo: "QUIM320", nombre: "Química Analítica", requisitos: ["QUIM200"] },
         { codigo: "ING129", nombre: "Inglés II", requisitos: ["ING119"] }
       ]},
-      { nombre: "Cuarto Semestre", asignaturas: [
+      { nombre: "4° Semestre", asignaturas: [
         { codigo: "BIOL260", nombre: "Bioqímica General", requisitos: ["QUIM310","BIOL272"] },
         { codigo: "BIOL265", nombre: "Laboratorio de Bioquímica General", requisitos: ["QUIM310","BIOL272"] },
         { codigo: "FARM401", nombre: "Fisiopatología y Semiología", requisitos: ["BIOL272"] },
@@ -115,7 +118,7 @@
         { codigo: "FARM402", nombre: "Farmacocinética y Biofarmacia", requisitos: ["QUIM300"] },
         { codigo: "ING239", nombre: "Inglés III", requisitos: ["ING129"] }
       ]},
-      { nombre: "Quinto Semestre", asignaturas: [
+      { nombre: "5° Semestre", asignaturas: [
         { codigo: "BIOL250", nombre: "Microbiología", requisitos: ["BIOL260","BIOL265"] },
         { codigo: "BIOL251", nombre: "Laboratorio de Microbiología General", requisitos: ["BIOL260","BIOL265"] },
         { codigo: "SPAB110", nombre: "Salud Pública I", requisitos: ["FARM401"] },
@@ -123,35 +126,35 @@
         { codigo: "FARM504", nombre: "Farmacología Humana I", requisitos: ["FARM401","FARM402"] },
         { codigo: "ING249", nombre: "Inglés IV", requisitos: ["ING239"] }
       ]},
-      { nombre: "Sexto Semestre", asignaturas: [
+      { nombre: "6° Semestre", asignaturas: [
         { codigo: "FARM601", nombre: "Fundamentos de Biología Molecular y Biotecnología", requisitos: ["BIOL250","BIOL251"] },
         { codigo: "FARM603", nombre: "Tecnología Farmacéutica I", requisitos: ["FARM402"] },
         { codigo: "FARM604", nombre: "Farmacología Humana II", requisitos: ["FARM504"] },
         { codigo: "FARM605", nombre: "Botánica y Farmacognosia", requisitos: ["FARM502","FARM504"] },
         { codigo: "FARM602", nombre: "Farmacoquímica II", requisitos: ["FARM502"] }
       ]},
-      { nombre: "Séptimo Semestre", asignaturas: [
+      { nombre: "7° Semestre", asignaturas: [
         { codigo: "FARM701", nombre: "Fármacovigilancia y Educación en Salud", requisitos: ["FARM604","SPAB110"] },
         { codigo: "FARM703", nombre: "Tecnología Farmacéutica II", requisitos: ["BIOL250","BIOL251","FARM603"] },
         { codigo: "FARM704", nombre: "Farmacología Humana III", requisitos: ["FARM604","FARM605"] },
         { codigo: "FARM702", nombre: "Bioquímica Clínica", requisitos: ["FARM401","FARM601"] },
         { codigo: "CEGT12", nombre: "Razonamiento Científico y TICS", requisitos: [] }
       ]},
-      { nombre: "Octavo Semestre", asignaturas: [
+      { nombre: "8° Semestre", asignaturas: [
         { codigo: "SPAB111", nombre: "Salud Pública II", requisitos: ["SPAB110","FARM701"] },
         { codigo: "FARM803", nombre: "Tecnología Cosmética", requisitos: ["FARM703"] },
         { codigo: "FARM801", nombre: "Farmacia Clínica y Atención Farmacéutica I", requisitos: ["FARM701","FARM702","FARM704"] },
         { codigo: "FARM802", nombre: "Toxicología Clínica y Forense", requisitos: ["FARM602","FARM702"] },
         { codigo: "CEGPC13", nombre: "Pensamiento Crítico", requisitos: [] }
       ]},
-      { nombre: "Noveno Semestre", asignaturas: [
+      { nombre: "9° Semestre", asignaturas: [
         { codigo: "FARM904", nombre: "Farmacoeconomía y Marketing", requisitos: ["SPAB111"] },
         { codigo: "FARM903", nombre: "Gestión y Control de Calidad Farmacéutico y de Alimentos", requisitos: ["FARM803"] },
         { codigo: "FARM901", nombre: "Farmacia Clínica y Atención Farmacéutica II", requisitos: ["FARM802","FARM801"] },
         { codigo: "FARM902", nombre: "Integrador I: Laboratorio Químico, Clínico, Forense y Biofarmacéutico", requisitos: ["QUIM420","FARM803","FARM802"] },
         { codigo: "SPAB112", nombre: "Administración y Gestión en Salud", requisitos: ["FARM801","SPAB111"] }
       ]},
-      { nombre: "Décimo Semestre", asignaturas: [
+      { nombre: "10° Semestre", asignaturas: [
         { codigo: "FARM915", nombre: "Ética y Legislación Farmacéutica", requisitos: ["FARM904","SPAB112"] },
         { codigo: "FARM911", nombre: "Farmacia Hospitalaria", requisitos: ["FARM901","SPAB112"] },
         { codigo: "FARM912", nombre: "Integrador II: Atención Clínica", requisitos: ["FARM901"] },
@@ -159,7 +162,7 @@
         { codigo: "FARM914", nombre: "Práctica en Farmacia Comunitaria", requisitos: ["FARM904","FARM903","FARM901","FARM902","SPAB112"] },
         { codigo: "CEGRS14", nombre: "Responsabilidad Social", requisitos: [] }
       ]},
-      { nombre: "Undécimo Semestre", asignaturas: [
+      { nombre: "11° Semestre", asignaturas: [
         { codigo: "FARM110", nombre: "Internado Farmacéutico", requisitos: ["FARM911","FARM912","FARM912","FARM914","FARM915"] }
     ]}];
 
