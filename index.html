@@ -19,11 +19,9 @@
     }
 
     #malla {
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-      padding-bottom: 20px;
-      min-width: max-content;
+      display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: 10px;
     }
 
     .semestre {
@@ -178,7 +176,11 @@
             <span class="requisitos">${asig.requisitos.length ? `Requisitos: ${asig.requisitos.join(", ")}` : "Sin requisitos"}</span>`;
 
           asigDiv.addEventListener("click", () => {
-            completadas.add(asig.codigo);
+            if (completadas.has(asig.codigo)) {
+    completadas.delete(asig.codigo);
+  } else {
+    completadas.add(asig.codigo);
+  }
             renderMalla();
           });
 
