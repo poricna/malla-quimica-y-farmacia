@@ -10,6 +10,7 @@
       background-color: #ffe6f0;
       margin: 20px;
       color: #333;
+      overflow-x: auto;
     }
 
     h1 {
@@ -18,9 +19,11 @@
     }
 
     #malla {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      display: flex;
+      flex-direction: row;
       gap: 20px;
+      padding-bottom: 20px;
+      min-width: max-content;
     }
 
     .semestre {
@@ -43,6 +46,7 @@
       border-left: 5px solid #f06292;
       background-color: #fce4ec;
       transition: 0.3s;
+      border-radius: 15px;
     }
 
     .asignatura.locked {
