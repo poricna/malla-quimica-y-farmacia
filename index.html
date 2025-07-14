@@ -173,8 +173,7 @@
           if (!cumplidos) asigDiv.classList.add("locked");
           if (completadas.has(asig.codigo)) asigDiv.classList.add("completed");
 
-          asigDiv.innerHTML = `<strong>${asig.codigo}</strong>: ${asig.nombre}<br>
-            <span class="requisitos">${asig.requisitos.length ? `Requisitos: ${asig.requisitos.join(", ")}` : "Sin requisitos"}</span>`;
+          asigDiv.textContent = asig.nombre;
 
           asigDiv.addEventListener("click", () => {
             if (completadas.has(asig.codigo)) {
